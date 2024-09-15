@@ -14,13 +14,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #00000041;
+            background-image: url('Bg.jpg');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #00000041; 
         }
 
         h1 {
             margin-bottom: 20px;
             font-size: 2.5em;
-            color: #000;
+            color: white;
             text-transform: uppercase;
             text-align: center;
         }
@@ -40,7 +44,7 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            font-size: 1;
+            font-size: 1em; 
             text-align: center;
             text-transform: uppercase;
             opacity: 0;
@@ -59,7 +63,7 @@
         }
 
         .card:hover .card-title {
-        opacity: 1;
+            opacity: 1;
         }
     
         .card img {
@@ -79,15 +83,15 @@
     <h1>Dashboard</h1>
     <div class="button-container">
         <div class="card" onclick="redirectToTransactions()">
-            <img src="bank.jpg" alt="Transactions">
+            <img src="bank.jpg" alt="Transactions"> 
             <div class="card-title">Transactions</div>
         </div>
         <div class="card" onclick="redirectToShopping()">
-            <img src="shopping.jpeg" alt="Shopping">
+            <img src="shopping.jpeg" alt="Shopping"> 
             <div class="card-title">Shopping</div>
         </div>
         <div class="card" onclick="redirectToApiCalling()">
-            <img src="api.png" alt="API Calling">
+            <img src="api.png" alt="API Calling"> 
             <div class="card-title">API Calling</div>
         </div>
     </div>
@@ -98,7 +102,7 @@
         }
 
         function redirectToShopping() {
-            window.location.href = 'shopping/index.html';
+            window.location.href = 'Shopping/index.html';
         }
 
         function redirectToApiCalling() {
