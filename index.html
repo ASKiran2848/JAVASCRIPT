@@ -82,6 +82,10 @@
 <body>
     <h1>Dashboard</h1>
     <div class="button-container">
+        <div class="card" onclick="redirectToStudentResults()">
+            <img src="grades.jpg" alt="Student Results"> 
+            <div class="card-title">Student Results</div>
+        </div>
         <div class="card" onclick="redirectToTransactions()">
             <img src="bank.jpg" alt="Transactions"> 
             <div class="card-title">Transactions</div>
@@ -97,6 +101,10 @@
     </div>
 
     <script>
+         function redirectToStudentResults() {
+            window.location.href = 'Student Results/grades.html';
+        }
+
         function redirectToTransactions() {
             window.location.href = 'TNX/transactions/main.html'; 
         }

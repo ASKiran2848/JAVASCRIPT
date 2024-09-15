@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1><marquee>Class 9 Report Card</marquee></h1>
+    <title>Student Report Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('reportcard.jpg');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #00000041; 
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Maths Marks</th>
+            <th>English Marks</th>
+            <th>Hindi Marks</th>
+            <th>Total and Grade</th>
+        </tr>
+        <script>
+            const subjects = ['Math', 'English', 'Hindi'];
+            const studentCount = 5;
+
+            for (let i = 1; i <= studentCount; i++) {
+                document.write(`
+                    <tr>
+                        <td><input type="text" id="s${i}"></td>
+                        <td><input type="number" id="m${i}"></td>
+                        <td><input type="number" id="e${i}"></td>
+                        <td><input type="number" id="h${i}"></td>
+                        <td><div id="s${i}total" class="result"></div></td>
+                    </tr>
+                `);
+            }
+        </script>
+    </table>
+    
+    <button type="button" onclick="submitAllResults()">Submit All</button>
+
+    <script>
+        function submitAllResults() {
+            for (let i = 1; i <= studentCount; i++) {
+                calculateResult(i);
+            }
+        }
+
+        function calculateResult(studentNumber) {
+            let marks = ['m', 'e', 'h'].map(sub => parseInt(document.getElementById(sub + studentNumber).value) || 0);
+            let total = marks.reduce((acc, val) => acc + val, 0);
+            let grade = getGrade(total);
+            let failedSubjects = getFailedSubjects(marks);
+
+            let resultText = `
+                <div>Total Marks: ${total}</div>
+                <div>Grade: ${grade}</div>
+                <div>Failed Subjects: ${failedSubjects}</div>
+            `;
+            document.getElementById("s" + studentNumber + "total").innerHTML = resultText;
+        }
+
+        function getGrade(total) {
+            if (total >= 270) return 'A';
+            if (total >= 240) return 'B';
+            if (total >= 200) return 'C';
+            if (total >= 150) return 'D';
+            if (total >= 100) return 'E';
+            return 'F';
+        }
+
+        function getFailedSubjects(marks) {
+            return subjects.filter((subject, i) => marks[i] < 35).join(', ') || 'None';
+        }
+    </script>
+</body>
+</html>
